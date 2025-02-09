@@ -1,0 +1,20 @@
+#ddev-generated
+services:
+  valkey:
+    container_name: ddev-${DDEV_SITENAME}-valkey
+    image: valkey/valkey:8-alpine
+    command: valkey-server --appendonly yes --requirepass valkey
+    # These labels ensure this service is discoverable by ddev.
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    volumes:
+    - ".:/mnt/ddev_config"
+    - "ddev-global-cache:/mnt/ddev-global-cache"
+    - "valkey:/data"
+
+volumes:
+    valkey:
+      name: ddev-${DDEV_SITENAME}-redis
+      labels:
+          com.ddev.site-name: ${DDEV_SITENAME}
