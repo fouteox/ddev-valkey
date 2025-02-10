@@ -1,9 +1,20 @@
 #ddev-generated
 services:
-  valkey:
+  web:
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  redis:
     container_name: ddev-${DDEV_SITENAME}-valkey
     image: valkey/valkey:8-alpine
-    command: valkey-server --appendonly yes --requirepass valkey
+    command: valkey-server --appendonly yes --requirepass redis
+    healthcheck:
+      test: [ "CMD", "redis-valkey", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
     # These labels ensure this service is discoverable by ddev.
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
