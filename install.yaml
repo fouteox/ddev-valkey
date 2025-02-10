@@ -1,5 +1,5 @@
 name: valkey
 
 project_files:
-  - commands/valkey/valkey
+  - commands/valkey/valkey-cli
   - docker-compose.valkey.yaml
