@@ -5,7 +5,7 @@
 
 ## Introduction
 
-This repository allows you to quickly install Valkey into a [DDEV](https://ddev.readthedocs.io) project using the instructions below.
+This repository allows you to quickly install [Valkey](https://valkey.io/) into a [DDEV](https://ddev.readthedocs.io) project using the instructions below.
 
 ## Installation
 
